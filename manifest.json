@@ -1,0 +1,18 @@
+{
+  "manifest_version": 3,
+  "name": "GitHub Issue/PR Navigator",
+  "version": "1.0",
+  "description": "Navigate GitHub issues and PRs using arrow keys",
+  "permissions": ["activeTab"],
+  "content_scripts": [
+    {
+      "matches": ["*://github.com/*"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "icons": {
+    "36": "icon36.png",
+    "128": "icon128.png"
+  }
+}
