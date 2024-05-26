@@ -1,4 +1,14 @@
 document.addEventListener('keydown', function(event) {
+  const searchBox = document.querySelector('input[name="q"]'); // 検索ボックスの要素を取得
+  const isInSearchBox = document.activeElement === searchBox; // 現在のフォーカスが検索ボックスにあるか確認
+
+  if (isInSearchBox) {
+    // 検索ボックスにフォーカスがある場合、エンターキーのイベントを無視
+    if (event.key === 'Enter') {
+      return;
+    }
+  }
+
   const items = document.querySelectorAll('.js-issue-row'); // GitHubのIssue/PRのリストを選択
   if (!items.length) return;
 
@@ -24,8 +34,8 @@ document.addEventListener('keydown', function(event) {
     currentIndex = Math.min(items.length - 1, currentIndex + 1);
   }
 
-  // Enterキー
-  if (event.key === 'Enter') {
+  // Enterキーが検索ボックスにフォーカスがないときだけ詳細画面に遷移する
+  if (event.key === 'Enter' && !isInSearchBox) {
     event.preventDefault();  // デフォルト動作をキャンセル
     const selectedItem = items[currentIndex];
     const link = selectedItem.querySelector('a.js-navigation-open');
