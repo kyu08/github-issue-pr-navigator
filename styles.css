@@ -1,4 +1,4 @@
 .selected {
-  background-color: #2D333B;
-  border-left: 4px solid #0366d6;
+  background-color: var(--bgColor-muted, transparent) !important;
+  border-left: 4px solid var(--borderColor-accent-emphasis, #0969da);
 }
